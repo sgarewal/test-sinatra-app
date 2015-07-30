@@ -1,0 +1,11 @@
+<link rel="stylesheet" href="style.css" media="screen" title="no title" charset="utf-8">
+<%= bootstrap_assets %>
+<img src="logo.png" class="logo" alt="logo" style="width:650px;height:228px;" >
+<h1>Who are you going to vote for? (Birmingham Constituencies Only)</h1>
+<h3>This is a website aimed at people who are stuck on who to vote for</h3>
+<p>Please enter your postcode...</p>
+<form action="/postcode" method="GET">
+  <input type='text' value="POSTCODE" name="postcode" /><p>Please do not use spaces</p>
+  <input type="submit" class="btn btn-primary">
+</form>
+<p>This website has an easy to use user interface that was designed with people that are stuck on who to vote for in mind. A huge amount of people last year struggled on a choice of MP, this app is here to change that!</p>

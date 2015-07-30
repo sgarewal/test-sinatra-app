@@ -1,0 +1,360 @@
+<link rel="stylesheet" href="style.css" media="screen" title="no title" charset="utf-8">
+<%= bootstrap_assets %>
+<!DOCTYPE html>
+<html>
+  <head>
+    <style>
+      #map-canvas {
+        width: 1200px;
+        height: 400px;
+      }
+    </style>
+    <script src="https://maps.googleapis.com/maps/api/js"></script>
+    <script type="text/javascript" src="jquery.js"></script>
+    <script>
+      function initialize() {
+        var mapCanvas = document.getElementById('map-canvas');
+        var mapOptions = {
+          center: new google.maps.LatLng(<%= @latitude %>, <%= @longitude %>),
+          zoom: 12,
+          mapTypeId: google.maps.MapTypeId.ROADMAP
+        }
+        var map = new google.maps.Map(mapCanvas, mapOptions)
+        var marker = new google.maps.Marker({
+            position: new google.maps.LatLng(<%= @latitude %>, <%= @longitude %>),
+            title:"<%=@constituency%>"
+        });
+        var infowindow = new google.maps.InfoWindow({
+        content:"<%=@ward_info%> in the town <%=@constituency%> in <%=@council_info%>"
+        });
+        marker.setMap(map);
+        google.maps.event.addListener(marker, 'click', function() {
+          infowindow.open(map,marker);
+        });
+      }
+      google.maps.event.addDomListener(window, 'load', initialize);
+    </script>
+  </head>
+  <body>
+    <div id="map-canvas"></div>
+    <h1 class = "constituency" >Your constituency is: <%= @constituency %></h1>
+
+<h3>Please choose two options from each topic, one from each section...</h3>
+
+<h1>Immigration</h1>
+
+<div class="immigration">
+  <form action="" class="views">
+    <input type="radio" class="labour">Stronger border controls to tackle illegal immigration <br>
+    <input type="radio" class="libdem">Reintroduce exit checks at borders<br>
+    <input type="radio" class="conservative">Migrants wait four years before they can claim certain benefits eg tax credits, Universal Credit, or social housing<br>
+    <input type="radio" class="ukip">Introduce an Australian-style points policy, used to select migrants with the skills and attributes needed to work in the country<br>
+    <input type="radio" class="green">Progressively reduce UK immigration controls.<br>
+  </form>
+</div>
+
+<div class="immigration-2">
+  <form action="" class="views">
+    <input type="radio" class="labour">Employment agencies who only recruit abroad will be outlawed<br>
+    <input type="radio" class="conservative">Stop migrants from claiming child benefit for dependents living outside the UK, and remove those that have failed to find work after six months.<br>
+    <input type="radio" class="libdem">Ensure that EU migrants have to "earn" their entitlement to benefits.<br>
+    <input type="radio" class="ukip">Anyone who currently has the legal right to live, work, or study in the UK would not face deportation in the event of the country's withdrawal from the EU.<br>
+    <input type="radio" class="green">Migrants illegally in the UK for over five years will be allowed to remain unless they pose a serious danger to public safety.<br>
+  </form>
+</div>
+
+<h1>Economy</h1>
+
+<div class="economy">
+  <form action="" class="views">
+    <input type="radio" class="labour">Reintroduce the 50p top rate of income tax for earnings over £150,000.<br>
+    <input type="radio" class="conservative">Tax would start to kick in at £12,500 a year, instead of £10,500. This will cost £5.6bn<br>
+    <input type="radio" class="libdem">Raise the personal allowance - the point at which you start paying income tax - to £11,000 in April 2016 and then to £12,500 by 2020.<br>
+    <input type="radio" class="ukip">Cut foreign aid budget by £9bn a year.<br>
+    <input type="radio" class="green">People earning more than £100,000 a year would pay 50% income tax.<br>
+  </form>
+</div>
+
+<div class="economy-2">
+  <form action="" class="views">
+    <input type="radio" class="labour">A 5% pay cut for every government minister.<br>
+    <input type="radio" class="conservative">The higher tax rate, 40%, would start at £50,000 instead of £41,900, again by 2020, at a cost of £1.6bn. This will be paid for through £25bn in additional spending cuts<br>
+    <input type="radio" class="libdem">Impose an additional 8% rate of corporation tax on UK banks to raise an extra £1bn a year.<br>
+    <input type="radio" class="ukip">Save £8bn a year in membership fees by leaving the EU.<br>
+    <input type="radio" class="green">Allow councils to impose extra business rates on out-of-town supermarkets to fund small local businesses.<br>
+  </form>
+</div>
+
+<h1>NHS</h1>
+
+<div class="nhs">
+  <form action="" class="views">
+    <input type="radio" class="labour">Extra £2bn into frontline health services<br>
+    <input type="radio" class="conservative">Prioritise child mental health by increasing the proportion of the mental health budget spent on children.<br>
+    <input type="radio" class="libdem">An extra £1bn for the NHS every year, to be funded by - making higher earners pay more tax on their shares. Half of this will go towards mental health.<br>
+    <input type="radio" class="ukip">Stop spending £90m a year on gastric band and breast enhancement operations.<br>
+    <input type="radio" class="green">Abolish prescription charges.<br>
+  </form>
+</div>
+
+<div class="nhs2">
+  <form action="" class="views">
+    <input type="radio" class="labour">In England, everyone would be able to see a GP seven days a week by 2020.<br>
+    <input type="radio" class="conservative">Patients in England would get a GP appointment within 48 hours and would not have to wait longer than a week for cancer tests and results.<br>
+    <input type="radio" class="libdem">People who need therapy for conditions such as depression will be guaranteed treatment within 18 weeks.<br>
+    <input type="radio" class="ukip">Keep NHS free at the point of delivery.<br>
+    <input type="radio" class="green">Dedicated NHS Tax to go direct to the health service.<br>
+  </form>
+</div>
+
+<h1>Security</h1>
+
+<div class="security">
+  <form action="" class="views">
+    <input type="radio" class="labour">Push for reform of European Union.<br>
+    <input type="radio" class="conservative">Hold a referendum on Britain's membership of the EU by 2017, after negotiating the return of some powers from Brussels.<br>
+    <input type="radio" class="libdem">Push for greater European Union efficiency.<br>
+    <input type="radio" class="ukip">Create a Veterans Department to look after the interests of ex-service men and women.<br>
+    <input type="radio" class="green">Take the UK out of NATO unilaterally.<br>
+  </form>
+</div>
+
+<div class="security2">
+  <form action="" class="views">
+    <input type="radio" class="labour">Outlaw discrimination and abuse of Armed Forces personnel.<br>
+    <input type="radio" class="conservative">Protect foreign aid budget.<br>
+    <input type="radio" class="libdem">Campaign to reduce the number of Trident nuclear submarines.<br>
+    <input type="radio" class="ukip">Remove the passports of any person who has gone to fight for a terrorist organisation and deport anyone who has committed a terrorist act.<br>
+    <input type="radio" class="green">Scrap Britain's nuclear weapons.<br>
+  </form>
+</div>
+
+<h1>Jobs</h1>
+
+<div class="jobs">
+  <form action="" class="views">
+    <input type="radio" class="labour">Ban "exploitative" zero hour contracts.<br>
+    <input type="radio" class="conservative">Create three million apprenticeships to be paid for by benefit cuts.<br>
+    <input type="radio" class="libdem">An extra £1 an hour for the lowest paid apprentices.<br>
+    <input type="radio" class="ukip">Allow firms to offer jobs to British workers first "without the fear of being sued for discrimination".<br>
+    <input type="radio" class="green">Create "sustainable jobs" and promote more local production of food and goods.<br>
+  </form>
+</div>
+
+<h1>Education</h1>
+
+<div class="education">
+  <form action="" class="views">
+    <input type="radio" class="labour">The amount of free childcare for three and four year olds would be increased from 15 to 25 hours a week.<br>
+    <input type="radio" class="conservative">State primary schools in England that repeatedly failed to have a proportion of year-six pupil pass times tables and writing tests be forced to become academies, or have sponsorship replaced if already an academy.<br>
+    <input type="radio" class="libdem">More money for disadvantaged school children and free childcare for all two year olds.<br>
+    <input type="radio" class="ukip">Scrap tuition fees for students from poorer backgrounds who take degree courses in the sciences, technology, maths or engineering.<br>
+    <input type="radio" class="green">Scrap university tuition fees.<br>
+  </form>
+</div>
+
+<div class="education2">
+  <form action="" class="views">
+    <input type="radio" class="labour">Compulsory sex and relationship education in all schools.<br>
+    <input type="radio" class="conservative">Opposed to giving votes to 16 and 17-year-olds for UK-wide general elections and local elections in England.<br>
+    <input type="radio" class="libdem">A two-thirds discount on all local bus fares for young people aged 16-21.<br>
+    <input type="radio" class="ukip">Allow universities to charge same amount for EU students as non-EU students.<br>
+    <input type="radio" class="green">Allow 16 and 17-year-olds to vote in all UK elections.<br>
+  </form>
+</div>
+
+<h1>Housing</h1>
+
+<div class="housing">
+  <form action="" class="views">
+    <input type="radio" class="labour">Greater powers for councils to reduce the number of empty homes<br>
+    <input type="radio" class="conservative">First-time buyers in England under the age of 40 would be able to buy a house at 20% below the market rate, with 100,000 starter homes to be built for them.<br>
+    <input type="radio" class="libdem">Build 300,000 houses a year, with up to five new garden cities in Cambridgeshire, Bedfordshire, Buckinghamshire and Oxfordshire.<br>
+    <input type="radio" class="ukip">Protect greenbelt land by incentivising the building of affordable homes on brownfield sites.<br>
+    <input type="radio" class="green">Home owners unable to meet mortgage payments or under threat of repossession would get right to transfer ownership to the council, at less than market value, and pay rent as council tenants.<br>
+  </form>
+</div>
+
+<h1>Law</h1>
+
+<div class="law">
+  <form action="" class="views">
+    <input type="radio" class="labour">Scrap Police and Crime Commissioners, to save £50m.<br>
+    <input type="radio" class="conservative">Replace Human Rights Act with Bill of Rights to give UK courts and Parliament the "final say".<br>
+    <input type="radio" class="libdem">End prison sentences for personal drugs possession<br>
+    <input type="radio" class="ukip">No votes for prisoners.<br>
+    <input type="radio" class="green">Decriminalise cannabis and axe prison sentences for possession of other drugs.<br>
+  </form>
+</div>
+
+<div class="law2">
+  <form action="" class="views">
+    <input type="radio" class="labour">Local residents to be given a say in deciding crime fighting priorities and have access to police planning meetings.<br>
+    <input type="radio" class="conservative">Extremism Disruption Orders (EXDOs) to stop "disruptive" individuals from speaking in public or holding a position of authority.<br>
+    <input type="radio" class="libdem">Make 'stop and search' more accountable by making the wearing of body cameras by officers compulsory in some areas and for firearms officers.<br>
+    <input type="radio" class="ukip">Those jailed for offences affecting their community should be banned from returning to live in the area, as a condition of their release.<br>
+    <input type="radio" class="green">Decriminalise prostitution.<br>
+  </form>
+</div>
+
+<h1>Benefits</h1>
+
+<div class="benefits">
+  <form action="" class="views">
+    <input type="radio" class="labour">Increase in the minimum wage from £6.50-an-hour to £8-an-hour by 2020.<br>
+    <input type="radio" class="conservative">Withdraw Jobseeker's Allowance from young people after six months unless they take part in "community projects".<br>
+    <input type="radio" class="libdem">Withdraw eligibility for the Winter Fuel Payment and free TV Licence from pensioners on the 40% rate of income tax.<br>
+    <input type="radio" class="ukip">Prevent anyone taking up permanent residence in Britain unless they're able to support themselves and any dependents they bring with them for at least five years and stop them receiving benefits.<br>
+    <input type="radio" class="green">Ban zero hours contracts.<br>
+  </form>
+</div>
+
+<div class="benefits2">
+  <form action="" class="views">
+    <input type="radio" class="labour">Double the amount of paid paternity leave available to new fathers from two to four weeks, and increase statutory paternity pay to £260 a week.<br>
+    <input type="radio" class="conservative">Young people out of work, education or training for six months will have to do unpaid community work to get benefits.<br>
+    <input type="radio" class="libdem">A "yellow card" system to deal with benefit claimants breaking the rules, rather than imposing sanctions without warning.<br>
+    <input type="radio" class="ukip">Only pay child benefit for the first two children for new claimants.<br>
+    <input type="radio" class="green">Scrap the government's welfare cap, which limits the maximum amount a household can claim annually to £26,000 a year.<br>
+  </form>
+</div>
+
+<h3>Source:BBC</h3>
+
+<input type="submit" class="btn btn-primary" id="submit-button">
+
+
+    <script>
+
+      labour_score = 0;
+      $('.labour').on('click', function() {
+        labour_score++;
+        alert(labour_score);
+      });
+      libdem_score = 0;
+      $('.libdem').on('click', function() {
+        libdem_score++;
+        alert(libdem_score);
+      });
+      conservative_score = 0;
+      $('.conservative').on('click', function() {
+        conservative_score++;
+        alert(conservative_score);
+      });
+      ukip_score = 0;
+      $('.ukip').on('click', function() {
+        ukip_score++;
+        alert(ukip_score);
+      });
+      green_score = 0;
+      $('.green').on('click', function() {
+        green_score++;
+        alert(green_score);
+      });
+
+      $('#submit-button').on('click', function() {
+        biggest_score = Math.max(libdem_score, conservative_score, labour_score, green_score)
+        if(biggest_score == libdem_score) {
+          party = 'lib_dem';
+        } else if (biggest_score == labour_score) {
+          party = 'labour';
+        } else if (biggest_score == conservative_score) {
+          party = 'conservative';
+        } else if (biggest_score == ukip_score) {
+          party = 'ukip';
+        } else if (biggest_score == green_score) {
+          party = 'green';
+        }
+
+        parties = {
+         birmingham__selly_oak: {
+            labour: 'Steve McCabe',
+            conservative: 'Alex Boulter',
+            ukip: 'Steven Brookes',
+            lib_dem: 'Colin Green',
+            green: 'Clare Thomas'
+          },
+
+          birmingham__erdington: {
+          labour: 'Jack Dromey',
+          conservative:	'Robert Alden',
+          ukip: 'Andrew Garcarz',
+          lib_dem: 'Ann Holtom',
+          green: 'Joe Belcher'
+          },
+
+          birmingham__edgbaston: {
+            labour: 'Gisela Stuart',
+            conservative: 'Luke Evans',
+            ukip: 'Graham Short',
+            lib_dem: 'Lee Dargue',
+            green: 'Phil Simpson'
+          },
+
+          birmingham__hall_green: {
+            labour: 'Roger Godsiff',
+            conservative: 'Robert Alden',
+            ukip: 'Rashpal Mondair',
+            lib_dem: 'Jerry Evans',
+            green: 'Elly Stanton'
+          },
+
+          birmingham__hodge_hill: {
+            labour: 'Liam Byrne',
+            conservative: 'Kieran Mullan',
+            ukip: 'Albert Duffen',
+            lib_dem: 'Phil Bennion',
+            green: 'Chris Nash'
+          },
+
+          birmingham__ladywood: {
+            labour: 'Shabana Mahmood',
+            conservative: 'Isabel Sigmac',
+            ukip: 'Clair Braund',
+            lib_dem: 'Shazad Iqbal',
+            green: 'Margaret Okole'
+          },
+
+          birmingham__northfield: {
+            labour: 'Richard Burden',
+            conservative: 'Rachel Maclean',
+            ukip: 'Keith Rowe',
+            lib_dem: 'Steve Haynes',
+            green: 'Anna Masters'
+          },
+
+          birmingham__perry_barr: {
+            labour: 'Khalid Mahmood',
+            conservative: 'Charlotte Hodivala',
+            ukip: 'Harjinder Singh',
+            lib_dem: 'Arjun Singh',
+            green: 'James Lovatt'
+          },
+
+          birmingham__yardley: {
+            labour: 'Jess Philips',
+            conservative: 'Arun Photay',
+            ukip: 'Paul Clayton',
+            lib_dem: 'John Hemming',
+            green: 'Grant Bishop'
+          },
+
+          sutton_coldfield: {
+            labour: 'Robert Pocock',
+            conservative: 'Andrew Mitchell',
+            ukip: 'Marcus John Brown',
+            lib_dem: 'Richard Brighton-Knight',
+            green: 'David Ratcliff'
+          },
+
+        };
+
+        alert("You should vote for " + parties["<%=@constituency.gsub(","," ").gsub(" ","_").downcase%>"][party] + " who stands for the " + party + " party.");
+
+
+      });
+
+    </script>
+
+  </body>
+</html>

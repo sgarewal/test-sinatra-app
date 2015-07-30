@@ -1,0 +1,31 @@
+h1{
+  color:orange !important;
+  font-family: "Comic Sans MS", sans-serif, monospace;
+}
+
+h3{
+  color:orange !important;
+  font-family: "Comic Sans MS", sans-serif, monospace;
+}
+
+p{
+  color:#ADFF2F !important;
+  font-family: "Comic Sans MS", sans-serif, monospace;
+}
+
+body {
+    color:#ADFF2F;
+    background-image: url("simple-blue-plain-wallpaper-powerpoint-background.jpg");
+    font-family: "Comic Sans MS", sans-serif, monospace;
+}
+.constituency{margin-top: 100px;}
+.views{
+  color:#ADFF2F;
+}
+
+p {
+    font-family: "Comic Sans MS", sans-serif, monospace;
+}
+
+ .logo{margin-left:300px;}
+ .btn btn-primary
